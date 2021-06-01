@@ -99,7 +99,7 @@ def tobs():
     return jsonify(tobs_all)
 
 @app.route("/api/v1.0/<start>")
-def calc_temps_start(start):
+def temps_start(start):
     session = Session(engine)
     start = session.query(func.avg(Measurement.tobs),func.max(Measurement.tobs),func.min(Measurement.tobs).\
                filter(Measurement.date >= start))
@@ -116,7 +116,7 @@ def calc_temps_start(start):
 
 # Create our session (link) from Python to the DB
 @app.route("/api/v1.0/<start>/<end>")
-def Start_end_date(start, end):
+def Start_end(start, end):
     
     session = Session(engine)
 
